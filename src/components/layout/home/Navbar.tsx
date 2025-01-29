@@ -1,9 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
 import { LogIn, ShoppingCart } from "lucide-react";
-import ToggleButton from "../utils/ToggleButton";
+import ToggleButton from "../../utils/ToggleButton";
 
-import CustomTooltip from "../utils/Tooltip";
-import { TLink } from "../interface";
+import CustomTooltip from "../../utils/Tooltip";
+import { TLink } from "../../interface";
 import MobileMenu from "./MobileMenu";
 
 const Navbar = () => {
@@ -46,9 +46,11 @@ const Navbar = () => {
             <CustomTooltip text='Cart'>
               <ShoppingCart className='hover:text-gray-400 cursor-pointer' />
             </CustomTooltip>
+            <Link to='/login'>
             <CustomTooltip text='Login'>
               <LogIn className='hover:text-gray-400 cursor-pointer' />
             </CustomTooltip>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}

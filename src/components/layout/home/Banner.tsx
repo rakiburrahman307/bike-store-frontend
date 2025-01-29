@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
 const Banner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

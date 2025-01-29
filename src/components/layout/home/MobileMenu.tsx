@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ShoppingCart, LogIn, Menu, X } from "lucide-react";
-import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../ui/sheet";
-import CustomTooltip from "../utils/Tooltip";
-import { TLink } from "../interface";
+import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../../ui/sheet";
+import CustomTooltip from "../../utils/Tooltip";
+import { TLink } from "../../interface";
 type MobileMenuProps = {
   links: TLink[];
 };
