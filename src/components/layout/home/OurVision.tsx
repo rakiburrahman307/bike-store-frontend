@@ -52,7 +52,7 @@ const OurVision = () => {
       {/* Section Heading */}
       <div className='text-center mb-12'>
         <h2 className='text-3xl font-semibold'>Our Vision</h2>
-        <p className='text-lg mt-2'>
+        <p className='text-lg mt-2 px-5'>
           At RideOn Bikes, we envision a world where cycling is accessible,
           sustainable, and enjoyable for everyone.
         </p>

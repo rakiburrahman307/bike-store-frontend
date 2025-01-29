@@ -32,7 +32,7 @@ const Products: React.FC = () => {
   }, []);
 
   return (
-    <div className="relative my-20">
+    <div className="relative my-20 px-5">
       {/* Heading and See More Button */}
       <div className="flex justify-between items-center mb-4">
         <div className="text-lg font-semibold">Featured Products</div>
@@ -42,7 +42,7 @@ const Products: React.FC = () => {
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
         {loading
           ? // Skeleton loaders while products are loading
             Array.from({ length: 8 }).map((_, index) => (

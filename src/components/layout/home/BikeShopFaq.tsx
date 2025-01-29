@@ -72,14 +72,14 @@ const FAQItem: React.FC<FAQ> = ({ question, answer }) => (
 
 const BikeShopFaq = () => {
   return (
-    <div>
+    <div className="px-5 my-10">
       <div className='text-center mb-12'>
         <h2 className='text-3xl font-semibold'>FAQ</h2>
         <p className='text-lg mt-2'>
           At RideOn Bikes faq for everyone.
         </p>
       </div>
-      <Accordion type='single' collapsible className='max-w-4xl mx-auto my-10'>
+      <Accordion type='single' collapsible className='w-full md:max-w-4xl mx-auto my-10'>
         {faqs.map((faq, index) => (
           <FAQItem key={index} question={faq.question} answer={faq.answer} />
         ))}
