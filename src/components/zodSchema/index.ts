@@ -12,7 +12,7 @@ export const registerSchema = z.object({
     .string()
     .min(10, "Phone number must be at least 10 digits")
     .regex(/^\d+$/, "Phone number must only contain numbers"),
-  address: z.string().min(5, "Address must be at least 5 characters"),
+  address: z.string().min(3, "Address must be at least 3 characters"),
   password: z
     .string()
     .min(6, "Password must be at least 6 characters")
