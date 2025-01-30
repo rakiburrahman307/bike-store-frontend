@@ -1,16 +1,14 @@
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { Button } from "../../ui/button";
-
+import image from "../../../assets/banner1.jpg";
+import image1 from "../../../assets/banner2.jpg";
+import image2 from "../../../assets/banner3.jpg";
 const Banner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [loadedImages, setLoadedImages] = useState<number[]>([]);
 
-  const slides = [
-    "https://via.placeholder.com/1920x1080/FF5733/FFFFFF?text=Banner+1",
-    "https://via.placeholder.com/1920x1080/33FF57/FFFFFF?text=Banner+2",
-    "https://via.placeholder.com/1920x1080/3357FF/FFFFFF?text=Banner+3",
-  ];
+  const slides = [image2, image, image1];
 
   const handlePrev = () => {
     setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
@@ -39,7 +37,7 @@ const Banner = () => {
             >
               {/* Placeholder while image is loading */}
               {!loadedImages.includes(index) && (
-                <div className='absolute top-64 inset-0 flex items-center justify-center bg-gray-300'>
+                <div className='absolute top-0 inset-0 flex items-center justify-center'>
                   <Loader2 className='h-10 w-10 text-gray-500 animate-spin' />
                 </div>
               )}

@@ -1,79 +1,127 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '../../ui/button';
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '../../ui/card';
-import { Skeleton } from '../../ui/skeleton';
+import { useState, useEffect, useMemo } from "react";
+import { Star, ShoppingCart } from "lucide-react";
+import { useGetAllProductsQuery } from "../../../redux/feature/Products/productApi";
+import { Skeleton } from "../../ui/skeleton";
+import { TProduct } from "../../interface";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "../../ui/card";
+import { Button } from "../../ui/button";
 
+const Products = () => {
+  const { data, isLoading } = useGetAllProductsQuery(undefined);
+  const allProducts = useMemo(
+    () => (Array.isArray(data?.data?.data) ? data.data.data : []),
+    [data]
+  );
 
-interface Product {
-  id: number;
-  name: string;
-  price: string;
-  imageUrl: string;
-}
-
-const bikeData: Product[] = [
-  { id: 1, name: 'Mountain Bike', price: '$500', imageUrl: 'https://via.placeholder.com/150' },
-  { id: 2, name: 'Road Bike', price: '$700', imageUrl: 'https://via.placeholder.com/150' },
-  { id: 3, name: 'Hybrid Bike', price: '$600', imageUrl: 'https://via.placeholder.com/150' },
-  { id: 4, name: 'Electric Bike', price: '$1200', imageUrl: 'https://via.placeholder.com/150' },
-  { id: 5, name: 'City Bike', price: '$450', imageUrl: 'https://via.placeholder.com/150' },
-  { id: 6, name: 'Kids Bike', price: '$250', imageUrl: 'https://via.placeholder.com/150' },
-  { id: 7, name: 'Folding Bike', price: '$300', imageUrl: 'https://via.placeholder.com/150' },
-  { id: 8, name: 'Racing Bike', price: '$900', imageUrl: 'https://via.placeholder.com/150' },
-];
-
-const Products: React.FC = () => {
-  const [loading, setLoading] = useState(true);
+  const [visibleProducts, setVisibleProducts] = useState<TProduct[]>([]);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // Simulate loading products (e.g., fetch from API)
-    setTimeout(() => setLoading(false), 1500);
-  }, []);
+    if (!isLoading && allProducts.length > 0) {
+      setTimeout(() => {
+        setVisibleProducts(allProducts.slice(0, 8));
+        setLoaded(true);
+      }, 500);
+    }
+  }, [isLoading, allProducts]);
 
   return (
-    <div className="relative my-20 px-5">
-      {/* Heading and See More Button */}
-      <div className="flex justify-between items-center mb-4">
-        <div className="text-lg font-semibold">Featured Products</div>
-        <Button variant="outline" size="sm" className="text-blue-600 hover:text-blue-800">
-          <Link to="#">See More</Link>
-        </Button>
+    <div className='relative my-20 px-5'>
+      {/* Heading */}
+      <div className='flex justify-between items-center mb-6'>
+        <h2 className='text-lg font-semibold'>Featured Products</h2>
       </div>
 
       {/* Product Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-6">
-        {loading
-          ? // Skeleton loaders while products are loading
-            Array.from({ length: 8 }).map((_, index) => (
-              <Card key={index} className="border p-4 rounded-lg">
-                <Skeleton className="w-full h-40 mb-4" />
-                <Skeleton className="w-3/4 h-6 mb-2" />
-                <Skeleton className="w-1/4 h-6" />
+      <div className='grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-6'>
+        {isLoading || !loaded
+          ? Array.from({ length: 8 }).map((_, index) => (
+              <Card key={index} className='border p-4 rounded-lg animate-pulse'>
+                <Skeleton className='w-full h-40 mb-4' />
+                <Skeleton className='w-3/4 h-6 mb-2' />
+                <Skeleton className='w-1/4 h-6' />
               </Card>
             ))
-          : bikeData.slice(0, 8).map((product) => (
-              <Card key={product.id} className="border p-4 rounded-lg">
-                <CardHeader>
-                  <CardTitle>{product.name}</CardTitle>
-                  <CardDescription>{product.price}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <img
-                    src={product.imageUrl}
-                    alt={product.name}
-                    className="w-full h-40 object-cover mb-4 rounded"
-                  />
-                </CardContent>
-                <CardFooter>
-                  <Button variant="outline" size="sm" className="w-full">
-                    Add to Cart
-                  </Button>
-                </CardFooter>
-              </Card>
+          : visibleProducts.map((product, index) => (
+              <ProductCard key={product._id} product={product} index={index} />
             ))}
       </div>
     </div>
+  );
+};
+
+const ProductCard = ({
+  product,
+  index,
+}: {
+  product: TProduct;
+  index: number;
+}) => {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  return (
+    <Card
+      className='border p-2 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 opacity-0 animate-fade-in'
+      style={{ animationDelay: `${index * 100}ms` }}
+    >
+      <CardContent className='flex flex-col items-center'>
+        {/* Image with Pulse Blur Effect */}
+        <div className='relative w-full h-40 overflow-hidden'>
+          {!imageLoaded && (
+            <div className='absolute inset-0 bg-gray-200 animate-pulse-blur rounded-md'></div>
+          )}
+          <img
+            src={product?.image || "/placeholder.jpg"}
+            alt={product?.name}
+            loading='lazy'
+            className={`w-full h-40 object-cover rounded-md transition-all duration-500 ${
+              imageLoaded
+                ? "opacity-100 blur-0"
+                : "opacity-50 blur-lg animate-pulse-blur"
+            }`}
+            onLoad={() => setImageLoaded(true)}
+          />
+        </div>
+      </CardContent>
+
+      <CardHeader className='text-center'>
+        <CardTitle className='text-lg font-medium truncate'>
+          {product?.name}
+        </CardTitle>
+        <CardDescription className='text-gray-500 text-sm'>
+          {product?.brand} - {product?.model}
+        </CardDescription>
+      </CardHeader>
+
+      <CardFooter className='flex flex-col gap-3'>
+        {/* Price & Rating Section */}
+        <div className='flex justify-between items-center w-full'>
+          <span className='text-xl font-semibold'>
+            ${product?.price.toFixed(2)}
+          </span>
+          <div className='flex items-center gap-1'>
+            <Star size={16} fill='currentColor' />
+            <span className='text-sm font-medium'>
+              {product?.rating ?? "N/A"}
+            </span>
+          </div>
+        </div>
+        <Button
+          variant='outline'
+          className='w-full flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-all'
+        >
+          <ShoppingCart size={18} />
+          Add to Cart
+        </Button>
+      </CardFooter>
+    </Card>
   );
 };
 

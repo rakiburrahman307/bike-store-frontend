@@ -1,22 +1,38 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormInput from "../utils/fromInput/FromInput";
 import { TLoginValues } from "../interface";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Form } from "../ui/form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "../zodSchema";
+import { useLoginMutation } from "../../redux/feature/auth/authApi";
+import { useAppDispatch } from "../../redux/hooks/hooks";
+import { setUser } from "../../redux/feature/auth/authSlice";
+import { verifyToken } from "../utils/verifyToken";
+import { toast } from "sonner";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const [login] = useLoginMutation();
+  const dispatch = useAppDispatch();
   const form = useForm<TLoginValues>({
     resolver: zodResolver(loginSchema),
-    defaultValues: { email: "", password: "" },
   });
-
-  const onSubmit: SubmitHandler<TLoginValues> = (data) => {
-    console.log(data);
-    form.reset();
+  const onSubmit: SubmitHandler<TLoginValues> = async (data) => {
+    const toastId = toast.loading("Logging in...");
+    try {
+      const res = await login(data).unwrap();
+      const user = await verifyToken(res?.data?.token);
+      dispatch(setUser({ user: user, token: res?.data?.token }));
+      toast.success(res?.message, { id: toastId });
+      navigate("/");
+      form.reset();
+    } catch (error: any) {
+      toast.error(error, { id: toastId });
+    }
   };
 
   return (

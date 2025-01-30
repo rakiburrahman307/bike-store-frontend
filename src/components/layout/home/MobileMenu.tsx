@@ -1,15 +1,18 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { ShoppingCart, LogIn, Menu, X } from "lucide-react";
 import { Sheet, SheetContent, SheetHeader, SheetTrigger } from "../../ui/sheet";
 import CustomTooltip from "../../utils/Tooltip";
 import { TLink } from "../../interface";
+import { useAppSelector } from "../../../redux/hooks/hooks";
+import { currentUser } from "../../../redux/feature/auth/authSlice";
+import UserAvatar from "./UserAvatar";
 type MobileMenuProps = {
   links: TLink[];
 };
 const MobileMenu = ({ links }: MobileMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const user = useAppSelector(currentUser);
   return (
     <div className='md:hidden'>
       {/* Mobile Menu Button */}
@@ -62,9 +65,16 @@ const MobileMenu = ({ links }: MobileMenuProps) => {
               <CustomTooltip text='Cart'>
                 <ShoppingCart className='hover:text-gray-400 cursor-pointer' />
               </CustomTooltip>
-              <CustomTooltip text='Login'>
-                <LogIn className='hover:text-gray-400 cursor-pointer' />
-              </CustomTooltip>
+
+              {user ? (
+                <UserAvatar />
+              ) : (
+                <Link to='/login'>
+                  <CustomTooltip text='Login'>
+                    <LogIn className='hover:text-gray-400 cursor-pointer' />
+                  </CustomTooltip>
+                </Link>
+              )}
             </div>
           </div>
         </SheetContent>

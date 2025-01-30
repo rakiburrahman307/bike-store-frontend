@@ -1,28 +1,33 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SubmitHandler, useForm } from "react-hook-form";
 import FormInput from "../utils/fromInput/FromInput";
 import { TRegisterValues } from "../interface";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Form } from "../ui/form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema } from "../zodSchema";
+import { useCreateUserMutation } from "../../redux/feature/auth/authApi";
+import { toast } from "sonner";
 
 const Register = () => {
+  const [createUser] = useCreateUserMutation();
+  const navigate = useNavigate();
   const form = useForm<TRegisterValues>({
     resolver: zodResolver(registerSchema),
-    defaultValues: {
-      name: "",
-      phone: "",
-      address: "",
-      email: "",
-      password: "",
-    },
   });
 
-  const onSubmit: SubmitHandler<TRegisterValues> = (data) => {
-    console.log(data);
-    form.reset();
+  const onSubmit: SubmitHandler<TRegisterValues> = async (data) => {
+    const toastId = toast.loading("User is creating...");
+    try {
+      const res = await createUser(data).unwrap();
+      toast.success(res?.message, { id: toastId });
+      navigate("/login");
+      form.reset();
+    } catch (error: any) {
+      toast.error(error, { id: toastId });
+    }
   };
 
   return (

@@ -5,8 +5,12 @@ import ToggleButton from "../../utils/ToggleButton";
 import CustomTooltip from "../../utils/Tooltip";
 import { TLink } from "../../interface";
 import MobileMenu from "./MobileMenu";
+import { useAppSelector } from "../../../redux/hooks/hooks";
+import { currentUser } from "../../../redux/feature/auth/authSlice";
+import UserAvatar from "./UserAvatar";
 
 const Navbar = () => {
+  const user = useAppSelector(currentUser);
   const links: TLink[] = [
     { name: "Home", href: "/" },
     { name: "Bikes", href: "/bikes" },
@@ -46,11 +50,16 @@ const Navbar = () => {
             <CustomTooltip text='Cart'>
               <ShoppingCart className='hover:text-gray-400 cursor-pointer' />
             </CustomTooltip>
-            <Link to='/login'>
-            <CustomTooltip text='Login'>
-              <LogIn className='hover:text-gray-400 cursor-pointer' />
-            </CustomTooltip>
-            </Link>
+
+            {user ? (
+              <UserAvatar />
+            ) : (
+              <Link to='/login'>
+                <CustomTooltip text='Login'>
+                  <LogIn className='hover:text-gray-400 cursor-pointer' />
+                </CustomTooltip>
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}

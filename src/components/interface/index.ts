@@ -25,3 +25,17 @@ export interface FormInputProps<T> {
   placeholder: string;
 }
 
+export interface TProduct {
+  _id: string;
+  userId: string;
+  name: string;
+  description: string;
+  image?: string;
+  rating?: number;
+  brand: string;
+  price: number;
+  model: string;
+  stock: number;
+  createdAt?: string;
+  updatedAt?: string;
+}

@@ -1,0 +1,203 @@
+[
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "SpeedX Roadster",
+      "description": "A high-performance road bike with lightweight carbon fiber frame.",
+      "image": "https://i.ibb.co.com/15fkj1c/bike3.jpg",
+      "rating": 4.8,
+      "brand": "SpeedX",
+      "price": 1599.99,
+      "model": "RX-2024",
+      "stock": 12
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "SpeedX",
+      "description": "A high-performance road bike with lightweight carbon fiber frame.",
+      "image": "https://i.ibb.co.com/b5nXcnWh/bike2.jpg",
+      "rating": 4.8,
+      "brand": "SpeedX",
+      "price": 1599.99,
+      "model": "RX-2025",
+      "stock": 12
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "TrailBlazer MTB",
+      "description": "A rugged mountain bike built for extreme trails and adventure.",
+      "image": "https://i.ibb.co.com/JjbpMN2w/bike4.jpg",
+      "rating": 4.7,
+      "brand": "TrailBlazer",
+      "price": 1299.99,
+      "model": "MTB-X1",
+      "stock": 8
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "Urban Glide E-Bike",
+      "description": "An electric bike designed for smooth urban commuting.",
+      "image": "https://i.ibb.co.com/fdsTKkPY/bike5.jpg",
+      "rating": 4.5,
+      "brand": "UrbanGlide",
+      "price": 1899.99,
+      "model": "E-Commute Pro",
+      "stock": 5
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "Thunder BMX",
+      "description": "A sturdy BMX bike for extreme stunts and tricks.",
+      "image": "https://i.ibb.co.com/Z6mQJrT5/bike6.jpg",
+      "rating": 4.6,
+      "brand": "Thunder",
+      "price": 799.99,
+      "model": "BMX-Thunderbolt",
+      "stock": 15
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "Thunder BMX",
+      "description": "A sturdy BMX bike for extreme stunts and tricks.",
+      "image": "https://i.ibb.co.com/Z6mQJrT5/bike6.jpg",
+      "rating": 4.6,
+      "brand": "Thunder",
+      "price": 799.99,
+      "model": "BMX-Thunderbolt",
+      "stock": 15
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "Velocity Hybrid Bike",
+      "description": "A versatile hybrid bike for city and light trail riding.",
+      "image": "https://i.ibb.co.com/0VQBzq1h/bike7.jpg",
+      "rating": 4.3,
+      "brand": "Velocity",
+      "price": 999.99,
+      "model": "Hybrid 2024",
+      "stock": 20
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "Cruiser Deluxe",
+      "description": "A comfortable cruiser bike with a retro look.",
+      "image": "https://i.ibb.co.com/DHnTtYm9/bike8.jpg",
+      "rating": 4.2,
+      "brand": "CruiseCo",
+      "price": 649.99,
+      "model": "Beach Cruiser 5000",
+      "stock": 10
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "Striker Dirt Bike",
+      "description": "A tough dirt bike designed for off-road adventures.",
+      "image": "https://i.ibb.co.com/GQy1cbj3/bike9.jpg",
+      "rating": 4.5,
+      "brand": "Striker",
+      "price": 1599.99,
+      "model": "DirtX-450",
+      "stock": 7
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "Striker Dirt Bike",
+      "description": "A tough dirt bike designed for off-road adventures.",
+      "image": "https://i.ibb.co.com/GQy1cbj3/bike9.jpg",
+      "rating": 4.5,
+      "brand": "Striker",
+      "price": 1599.99,
+      "model": "DirtX-450",
+      "stock": 7
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "GlideFix Folding Bike",
+      "description": "A compact and lightweight folding bike for easy storage.",
+      "image": "https://i.ibb.co.com/yFHv5MPv/bike10.jpg",
+      "rating": 4.0,
+      "brand": "GlideFix",
+      "price": 899.99,
+      "model": "FoldX-Compact",
+      "stock": 18
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "Vortex Racing Bike",
+      "description": "A professional-grade racing bike with aerodynamic design.",
+      "image": "https://i.ibb.co.com/yF5rmS8x/bike12.jpg",
+      "rating": 4.9,
+      "brand": "Vortex",
+      "price": 2499.99,
+      "model": "Race-Pro V12",
+      "stock": 3
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "Vortex Racing Bike",
+      "description": "A professional-grade racing bike with aerodynamic design.",
+      "image": "https://i.ibb.co.com/yF5rmS8x/bike12.jpg",
+      "rating": 4.9,
+      "brand": "Vortex",
+      "price": 2499.99,
+      "model": "Race-Pro V12",
+      "stock": 3
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "Vortex Racing Bike",
+      "description": "A professional-grade racing bike with aerodynamic design.",
+      "image": "https://i.ibb.co.com/4Z1t2TL9/bike.jpg",
+      "rating": 4.9,
+      "brand": "Vortex",
+      "price": 2499.99,
+      "model": "Race-Pro V12",
+      "stock": 3
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "EcoRide Electric Scooter",
+      "description": "A powerful electric scooter for eco-friendly commuting.",
+      "image": "https://i.ibb.co.com/h64F8N8/bike11.jpg",
+      "rating": 4.4,
+      "brand": "EcoRide",
+      "price": 1299.99,
+      "model": "EcoScoot-500",
+      "stock": 25
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "EcoRide Electric Scooter",
+      "description": "A powerful electric scooter for eco-friendly commuting.",
+      "image": "https://i.ibb.co.com/h64F8N8/bike11.jpg",
+      "rating": 4.4,
+      "brand": "EcoRide",
+      "price": 1299.99,
+      "model": "EcoScoot-500",
+      "stock": 25
+    },
+    {
+      "userId": "679bbffbc21ad9b343fc8d57",
+      "name": "EcoRide Electric Scooter",
+      "description": "A powerful electric scooter for eco-friendly commuting.",
+      "image": "https://i.ibb.co.com/cSRwgjcW/bike1.jpg",
+      "rating": 4.4,
+      "brand": "EcoRide",
+      "price": 1299.99,
+      "model": "EcoScoot-500",
+      "stock": 25
+    }
+  ]
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
