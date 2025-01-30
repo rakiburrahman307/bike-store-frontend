@@ -12,6 +12,7 @@ import {
   CardTitle,
 } from "../../ui/card";
 import { Button } from "../../ui/button";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const { data, isLoading } = useGetAllProductsQuery(undefined);
@@ -37,6 +38,9 @@ const Products = () => {
       {/* Heading */}
       <div className='flex justify-between items-center mb-6'>
         <h2 className='text-lg font-semibold'>Featured Products</h2>
+        <Button variant="outline" size="sm" className="text-blue-600 hover:text-blue-800">
+          <Link to="/products">See More</Link>
+        </Button>
       </div>
 
       {/* Product Grid */}
